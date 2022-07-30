@@ -32,6 +32,10 @@ $ npm install
   },
 }
 ```
+
+## API Documention
+[Postman API Documention](https://documenter.getpostman.com/view/17898602/UzdzTQYN)
+
 ## Environment Variables 
 > src/config/env.js
 ```
