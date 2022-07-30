@@ -1,0 +1,28 @@
+{
+  "name": "et3-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier --config .prettierrc './**/*.js'  --write",
+    "dev": "nodemon index.js 5050",
+    "prod": " NODE_ENV=prod node index.js 8080",
+    "start": "node index.js",
+    "jasmine": "npx jasmine"
+  },
+  "author": "Mohammd El-khamisi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "sequelize": "^6.21.3"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  }
+}
