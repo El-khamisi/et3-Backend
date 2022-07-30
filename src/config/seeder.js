@@ -1,6 +1,5 @@
-const User = require('../services/user/user.model');
-const { Admin } = require('./roles');
 const bcrypt = require('bcrypt');
+const userModel = require('../services/users/user.model');
 
 const superAdmin = async () => {
   const prototype = {
@@ -8,25 +7,21 @@ const superAdmin = async () => {
     last_name: 'cake',
     email: 'admin@test.com',
     password: 'admin123',
-    role: Admin,
+    role: 'admin',
   };
 
   try {
-    const usr = await User.findOne({
-      email: 'admin@test.com',
-    }).exec();
-
+    const usr = await userModel.findOne({ whare: { email: prototype.email } });
     if (!usr) {
-      const saved = new User(prototype);
       if (prototype.password) {
-        saved.password = bcrypt.hashSync(prototype.password, 10);
+        prototype.password = bcrypt.hashSync(prototype.password, 10);
       } else {
         throw new Error('Invalid Password');
       }
-      await saved.save();
+      const saved = await userModel.create(prototype);
     }
   } catch (e) {
-    console.log('CAN NOT CREATE SUPER ADMIN' + e.message);
+    throw new Error('CAN NOT CREATE SUPER ADMIN ' + e.message);
   }
 };
 
